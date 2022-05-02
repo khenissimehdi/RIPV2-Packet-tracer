@@ -25,7 +25,8 @@ router rip
  network 192.168.0.0 // routers network address
  no auto-summary
 ```
-
+## R4
+for this one you just have to add the ip addresses on the right interface.
 
 ## R3
 
@@ -66,6 +67,13 @@ ip nat inside
 ```
 interface <Interface-Name>
 ip nat outside
+```
+Now we are going to use a method that will allow the PAT(Port Address Translation) this will help the machines connect
+to the internet using a single public ip address but use the port to translate the response back to the machine that 
+requested it 
+
+```
+ip nat inside source list 1 interface <OUT-INTERFACE> overload
 ```
 
 
